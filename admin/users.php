@@ -120,6 +120,15 @@ $select_users->execute();
          <button type="submit" class="fas fa-refresh" id="homeBtn" ></button>
       </form>
 
+      <center><button class="fas fa-sort" style="cursor: pointer" id="print">
+         sort per department
+      </button>
+      <button class="fas fa-print" style="cursor: pointer" id="print">
+         sort per specialty
+      </button>
+      </center>
+      <br>
+
       <center><button class="fas fa-print" style="cursor: pointer" id="print">
          Print
       </button>
