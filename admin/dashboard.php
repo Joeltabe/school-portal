@@ -115,7 +115,5 @@ if(isset($_COOKIE['admin_id'])){
 <!-- custom js file link  -->
 <script src="../js/admin_script.js"></script>
 
-<?php include '../components/message.php'; ?>
-
 </body>
 </html>

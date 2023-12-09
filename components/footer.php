@@ -8,7 +8,7 @@
          <a href="tel:650665871"><i class="fas fa-phone"></i><span>650665871</span></a>
          <a href="tel:675071913"><i class="fas fa-phone"></i><span>675071913</span></a>
          <a href="mailto:joeltabe3@gmail.com"><i class="fas fa-envelope"></i><span>landmark@gmail.com</span></a>
-         <a href="#"><i class="fas fa-map-marker-alt"></i><span>chiefstreet molyko, Buea</span></a>
+         <a href="#"><i class="fas fa-map-marker-alt"></i><span>tarred malingo, Buea</span></a>
       </div>
 
       <div class="box">

@@ -115,29 +115,51 @@ if (isset($_POST['submit'])) {
       <input type="text" name="pob" required maxlength="50" placeholder="enter your place of birth" class="box">
        <!-- departments -->
        <h4 class="reg_label">Enter your department:</h4>
-      <select class="box" name="department" id="department"> 
+      <!-- <select class="box" name="department" id="department"> 
         <?php
 
         for($i =0;$i< count($departments); $i++){
          $department = $departments[$i];
-         echo "<option value='". $department['department_name'] . "' name='department'>". $department['department_name'] ."</option>";
+         echo "<option value='". $department['id'] . "' name='department'>". $department['department_name'] ."</option>";
 
         }
         ?>
      
-      </select>
+      </select> -->
+      <select class="box" name="department" id="department"> 
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM `departments`");
+    $stmt->execute();
+    $departments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($departments as $department) {
+        echo "<option value='" . $department['department_name'] . "' name='department'>" . $department['department_name'] . "</option>";
+    }
+    ?>
+    </select>
       <h4 class="reg_label">Enter your specialty:</h4>
-      <select class="box" name="specialty" id="specialty">
+      <!-- <select class="box" name="specialty" id="specialty">
       <?php
       if (is_array($specialties)) { // Check if $specialties is an array
          foreach ($specialties as $specialty) {
-               echo "<option value='" . $specialty['specialty_name'] . "' name='specialty'>" . $specialty['specialty_name'] . "</option>";
+               echo "<option value='" . $specialty['id'] . "' name='specialty'>" . $specialty['specialty_name'] . "</option>";
          }
       } else {
          echo "<option disabled>No specialties available</option>";
       }
       ?>
-       </select>
+       </select> -->
+       <select class="box" name="specialty" id="specialty">
+    <?php
+    if (is_array($specialties)) { // Check if $specialties is an array
+        foreach ($specialties as $specialty) {
+            echo "<option value='" . $specialty['specialty_name'] . "' name='specialty'>" . $specialty['specialty_name'] . "</option>";
+        }
+    } else {
+        echo "<option disabled>No specialties available</option>";
+    }
+    ?>
+</select>
        <h4 class="reg_label">Enter level:</h4>
     <select class="box" name="level" id="level" onchange="toggleLevelInput()" required>
         <option value="200">200</option>
@@ -152,11 +174,11 @@ if (isset($_POST['submit'])) {
     <!-- Other form fields... -->
     <h4 class="reg_label">Enter Award:</h4>
     <select class="box" name="award" required>
-        <option value="1">HND</option>
-        <option value="2">Bsc</option>
-        <option value="3">Masters</option>
-        <option value="4">Phd</option>
-        <option value="5">Other</option>
+    <option value="HND">HND</option>
+    <option value="Bsc">Bsc</option>
+    <option value="Masters">Masters</option>
+    <option value="Phd">Phd</option>
+    <option value="Other">Other</option>
     </select>
 
     <!-- Other form fields... -->
@@ -188,7 +210,6 @@ if (isset($_POST['submit'])) {
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
 
-<?php include 'components/message.php'; ?>
 
 </body>
 

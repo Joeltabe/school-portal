@@ -119,7 +119,7 @@ if(isset($_POST['submit'])){
 <!-- custom js file link  -->
 <script src="../js/admin_script.js"></script>
 
-<?php include '../components/message.php'; ?>
+
 
 </body>
 </html>
