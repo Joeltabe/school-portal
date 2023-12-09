@@ -20,11 +20,6 @@
    text-decoration: none;
 }
 
-*::selection{
-   background-color: var(--main-color);
-   color: var(--white);
-}
-
 *::-webkit-scrollbar{
    height: .5rem;
    width: 1rem;

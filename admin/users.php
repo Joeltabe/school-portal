@@ -8,6 +8,7 @@ if (isset($_COOKIE['admin_id'])) {
    $admin_id = '';
    header('location:login.php');
 }
+$is_sortedBy = "nothing";
 
 $select_users = $conn->prepare("SELECT * FROM `user`");
 $select_users->execute();
@@ -41,6 +42,10 @@ if (isset($_GET['search_btn'])) {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+}
+
+.seperate-depart{
+   border-top: 3px solid #2980b9;
 }
 
 #customers td, #customers th {
@@ -128,6 +133,10 @@ if (isset($_GET['search_btn'])) {
     .intro{
       display: flex;
     }
+    body {
+      background-color: white;
+    }
+
 }
 
    /* Default table styles */
@@ -173,6 +182,19 @@ if (isset($_GET['search_btn'])) {
          <input type="text"   name="search_box" placeholder="search users..." maxlength="100" required id="search_box">
          <button type="submit" class="fas fa-search" name="search_btn"></button>
          <button type="submit" class="fas fa-refresh" id="homeBtn" ></button>
+         <?php
+         $select_users = $conn->prepare("SELECT * FROM `user`");
+         $select_users->execute();
+         
+         $select_users = $conn->prepare("SELECT * FROM `user`");
+         if (isset($_GET['search_btn'])) {
+            $search_box = $_GET['search_box'];
+            $search_box = filter_var($search_box, FILTER_SANITIZE_STRING);
+            $select_users = $conn->prepare("SELECT * FROM `user` WHERE name LIKE '%$search_box%' OR email LIKE '%$search_box%' OR matricule LIKE '%$search_box%'");
+            $result =  $select_users;
+         }
+         
+         ?>
       </form>
       <div class="buttons">
       <center>
@@ -232,18 +254,22 @@ if (isset($_GET['search_btn'])) {
    <?php
 // Check if the sort buttons is clicked
 if (isset($_POST['sort_department'])) {
+   $is_sortedBy = 'department';
    $select_users = $conn->prepare("SELECT * FROM `user` ORDER BY department");
    $select_users->execute();
    $result = $select_users->fetchAll(PDO::FETCH_ASSOC);
 } elseif (isset($_POST['sort_specialty'])) {
+   $is_sortedBy = 'specialty';
    $select_users = $conn->prepare("SELECT * FROM `user` ORDER BY specialty");
    $select_users->execute();
    $result = $select_users->fetchAll(PDO::FETCH_ASSOC);
 } elseif (isset($_POST['sort_level'])) {
+   $is_sortedBy = 'level';
    $select_users = $conn->prepare("SELECT * FROM `user` ORDER BY level");
    $select_users->execute();
    $result = $select_users->fetchAll(PDO::FETCH_ASSOC);
 } else {
+   $is_sortedBy = 'nothing';
    $select_users = $conn->prepare("SELECT * FROM `user`");
    $select_users->execute();
    $result = $select_users->fetchAll(PDO::FETCH_ASSOC);
@@ -269,24 +295,44 @@ if (isset($_POST['sort_department'])) {
    </tr>
    <?php
    if (isset($result) && count($result) > 0) {
+      $prev_depart = 'nothing';
       foreach ($result as $fetch_users) {
-         ?>
-         <tr>
-            <td><?= $fetch_users['matricule']; ?></td>
-            <td><?= $fetch_users['name']; ?></td>
-            <td><?= $fetch_users['gender']; ?></td>
-            <td><?= $fetch_users['dob']; ?></td>
-            <td><?= $fetch_users['pob']; ?></td>
-            <td><?= $fetch_users['department']; ?></td>
-            <td><?= $fetch_users['specialty']; ?></td>
-            <td><?= $fetch_users['level']; ?></td>
-            <td><?= $fetch_users['award']; ?></td>
-            <td><?= $fetch_users['email']; ?></td>
-            <td><?= $fetch_users['number']; ?></td>
-            <td><?= $fetch_users['language']; ?></td>
-            <td><?= $fetch_users['academic_year']; ?></td>
-         </tr>
-   <?php
+         
+         if($is_sortedBy == 'department' || $is_sortedBy == 'specialty' || $is_sortedBy == 'level'){
+            $seperate_depart = $prev_depart == $fetch_users[$is_sortedBy] ? '': 'seperate-depart';
+            if($seperate_depart != ''){
+               $cur =  $fetch_users[$is_sortedBy];
+               echo "<tr><td colspan='13'><h3 style='text-transform: capitalize;'>". $is_sortedBy . ": " .$cur ."</h3></td></tr>";
+            }
+            echo "<tr class='$seperate_depart'>";
+
+         }else {
+            echo "<tr>";
+         }
+         
+            echo   "<td>". $fetch_users['matricule'] . "</td>
+            <td>". $fetch_users['name'] ."</td>
+            <td>". $fetch_users['gender'] ."</td>
+            <td>". $fetch_users['dob'] ."</td>
+            <td>". $fetch_users['pob'] ."</td>
+            <td>". $fetch_users['department'] ."</td>
+            <td>". $fetch_users['specialty'] ."</td>
+            <td>". $fetch_users['level'] ."</td>
+            <td>". $fetch_users['award'] ."</td>
+            <td>". $fetch_users['email'] ."</td>
+            <td>". $fetch_users['number'] ."</td>
+            <td>". $fetch_users['language'] ."</td>
+            <td>". $fetch_users['academic_year'] ."</td>
+         </tr>";
+
+         if($is_sortedBy == 'department'){
+            $prev_depart = $fetch_users['department'];
+         }else if($is_sortedBy == 'specialty'){
+            $prev_depart = $fetch_users['specialty'];
+         }else if($is_sortedBy == 'level'){
+            $prev_depart = $fetch_users['level'];
+         }
+         
       }
    } else {
       echo "<tr><td colspan='13'>No data found.</td></tr>";
