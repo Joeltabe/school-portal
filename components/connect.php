@@ -5,7 +5,11 @@
    $db_user_pass = '';
 
    $conn = new PDO($db_name, $db_user_name, $db_user_pass);
-
+if($conn){
+    echo 'connected ';
+}else{
+    echo 'not connected';
+}
    function create_unique_id(){
       $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
       $charactersLength = strlen($characters);

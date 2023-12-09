@@ -1144,16 +1144,6 @@ section{
    text-decoration: underline;
 }
 
-
-
-
-
-
-
-
-
-
-
 .footer{
    background-color: var(--black);
 }
@@ -1216,14 +1206,6 @@ section{
 .footer .credit span{
    color: var(--main-color);
 }
-
-
-
-
-
-
-
-
 
 /* media queries  */
 

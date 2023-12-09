@@ -56,9 +56,7 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../css/admin_style.css">
     <style>
         /* Style for the form */
-        * {
-            font-size: 1.5rem;
-        }
+       
 
         form.form {
             display: flex;
@@ -133,7 +131,7 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 
-<body>
+<body style="font-size: 1.5rem;">
     <?php include '../components/admin_header.php'; ?>
     <div style="display: flex; justify-content: center;">
         <form method="post" action="" class="form">

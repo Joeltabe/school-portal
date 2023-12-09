@@ -94,7 +94,7 @@ if(isset($_COOKIE['admin_id'])){
       <p>total specialties</p>
       <a href="add_sp.php" class="btn">view specialties</a>
    </div>
-   <!-- <div class="box">
+   <div class="box">
       <?php
          $select_messages = $conn->prepare("SELECT * FROM `messages`");
          $select_messages->execute();
@@ -103,7 +103,7 @@ if(isset($_COOKIE['admin_id'])){
       <h3><?= $count_messages; ?></h3>
       <p>new messages</p>
       <a href="messages.php" class="btn">view messages</a>
-   </div> -->
+   </div>
 
    </div>
 

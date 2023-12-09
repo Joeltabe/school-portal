@@ -167,7 +167,7 @@ if (isset($_GET['search_btn'])) {
 
    <section class="grid">
 
-      <h1 class="heading">users</h1>
+      <h1 class="heading">Students</h1>
 
       <form action="" method="GET" class="search-form" id="form">
          <input type="text"   name="search_box" placeholder="search users..." maxlength="100" required id="search_box">
