@@ -53,7 +53,7 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../project/js/admin_script.js"></script>
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="../css/admin_style.css">
+    <link href="../css/admin_style.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
     <style>
         /* Style for the form */
        

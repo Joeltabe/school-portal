@@ -54,7 +54,7 @@ $departments = $stmt->fetchAll(PDO::FETCH_ASSOC);
    <!-- SweetAlert CDN link -->
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/admin_style.css">
+   <link href="../css/admin_style.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
     <style>
         body {
             font-family: Arial, sans-serif;
