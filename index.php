@@ -12,7 +12,8 @@
 
 		<!--<link rel="stylesheet" href="css/icon-font.css">-->
 
-		<link rel="stylesheet" href="css/css/style.css" />
+		<link href="css/css/style.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+
 
 		<title>HTTC KUMBA</title>
         <style>
