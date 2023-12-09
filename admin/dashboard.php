@@ -73,6 +73,27 @@ if(isset($_COOKIE['admin_id'])){
       <a href="admins.php" class="btn">view admins</a>
    </div>
 
+   <div class="box">
+      <?php
+         $select_admins = $conn->prepare("SELECT * FROM `departments`");
+         $select_admins->execute();
+         $count_admins = $select_admins->rowCount();
+      ?>
+      <h3><?= $count_admins; ?></h3>
+      <p>total departments</p>
+      <a href="add_dpt.php" class="btn">view departments</a>
+   </div>
+
+   <div class="box">
+      <?php
+         $select_admins = $conn->prepare("SELECT * FROM `specialty`");
+         $select_admins->execute();
+         $count_admins = $select_admins->rowCount();
+      ?>
+      <h3><?= $count_admins; ?></h3>
+      <p>total specialties</p>
+      <a href="add_sp.php" class="btn">view specialties</a>
+   </div>
    <!-- <div class="box">
       <?php
          $select_messages = $conn->prepare("SELECT * FROM `messages`");
@@ -90,24 +111,6 @@ if(isset($_COOKIE['admin_id'])){
 
 
 <!-- dashboard section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>

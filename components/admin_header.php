@@ -19,4 +19,31 @@
 
 </header>
 
-<div id="menu-btn" class="fas fa-bars"></div>
+<div id="menu-btn" class="fas fa-bars" onclick="myFunction()"></div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+   // Code that depends on the DOM being fully loaded
+   let header = document.querySelector('.header');
+
+   document.querySelector('#menu-btn').onclick = () => {
+       header.classList.add('active');
+   }
+
+   document.querySelector('#close-btn').onclick = () => {
+       header.classList.remove('active');
+   }
+
+   window.onscroll = () => {
+       header.classList.remove('active');
+   }
+
+   document.querySelectorAll('input[type="number"]').forEach(inputNumber => {
+       inputNumber.oninput = () => {
+           if (inputNumber.value.length > inputNumber.maxLength) {
+               inputNumber.value = inputNumber.value.slice(0, inputNumber.maxLength);
+           }
+       }
+   });
+});
+</script>
