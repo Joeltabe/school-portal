@@ -247,7 +247,12 @@
          </center>
          <center><button class="fas fa-print" 
             id="print">
-            Print
+            Print page
+         </button>
+         </center>
+         <center><button class="fas fa-print" 
+            id="print">
+            Print student form
          </button>
          </center>
          </div>
