@@ -141,6 +141,39 @@
          text-decoration: none;
          color: white;
       }
+      .flex{
+      display: flex;
+      justify-content: center;
+    }
+    .head{
+      margin-right: 36px;
+    }
+    .head h3{
+      font-size: 2rem;
+      line-height: 1.9;
+    }
+    .data p{
+      font-size: 2rem;
+      line-height: 1.9;
+    }
+    .text{
+      margin: 70px;
+    }
+    .stamp{
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 40px;
+    }
+    .details{
+      display: block;
+      line-height: 29.9px;
+    }
+    .stamp{
+      display: none;
+   }
+   .footer{
+      display: none;
+   }
    @media print {
       header, footer, aside, form, #form, .heading, #print,#menu-btn{
          display: none;
@@ -397,12 +430,55 @@
                $prev_depart1 = $fetch_users['level'];
                $prev_depart2 = $fetch_users['specialty'];
             }
+
          }
       } else {
          echo "<tr><td colspan='13'>No data found.</td></tr>";
       }
       ?>
    </table>
+   <div class="flex">
+   
+   <?php
+   if (isset($result) && count($result) > 0) {
+      foreach ($result as $fetch_users) {
+      echo "<div class='head'>
+         <h3>Matricule:</h3>
+         <h3>Name:</h3>
+         <h3>Gender:</h3>
+         <h3>Date of Birth:</h3>
+         <h3>Place of Birth:</h3>
+         <h3>Department:</h3>
+         <h3>Specialty:</h3>
+         <h3>Level:</h3>
+         <h3>Award:</h3>
+         <h3>Email:</h3>
+         <h3>Number:</h3>
+         <h3>Language:</h3>
+         <h3>Academic Year:</h3>
+      </div>";
+            echo "<div class='data'>
+            echo   '<p>'. $fetch_users['matricule'] . '</p>
+            <p>". $fetch_users['name'] ."</p>
+            <p>". $fetch_users['gender'] ."</p>
+            <p>". $fetch_users['dob'] ."</p>
+            <p>". $fetch_users['pob'] ."</p>
+            <p>". $fetch_users['department'] ."</p>
+            <p>". $fetch_users['specialty'] ."</p>
+            <p>". $fetch_users['level'] ."</p>
+            <p>". $fetch_users['award'] ."</p>
+            <p>". $fetch_users['email'] ."</p>
+            <p>". $fetch_users['number'] ."</p>
+            <p>". $fetch_users['language'] ."</p>
+            <p>". $fetch_users['academic_year'] ."</p>
+            </div>";
+      }
+   } else {
+      echo "<tr><td colspan='13'>No data found.</td></tr>";
+   }
+   ?>
+   </div>
+   </div>
    </section>
       </section>
 
