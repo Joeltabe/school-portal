@@ -139,6 +139,39 @@ $select_users->execute();
       text-decoration: none;
       color: white;
     }
+    .flex{
+      display: flex;
+      justify-content: center;
+    }
+    .head{
+      margin-right: 36px;
+    }
+    .head h3{
+      font-size: 2rem;
+      line-height: 1.9;
+    }
+    .data p{
+      font-size: 2rem;
+      line-height: 1.9;
+    }
+    .text{
+      margin: 70px;
+    }
+    .stamp{
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 40px;
+    }
+    .details{
+      display: block;
+      line-height: 29.9px;
+    }
+    .stamp{
+      display: none;
+   }
+   .footer{
+      display: none;
+   }
 @media print {
     header, footer, aside, form, #form, .heading, #print,#menu-btn{
         display: none;
@@ -155,6 +188,12 @@ $select_users->execute();
     .view{
       display: none;
     }
+    .stamp{
+    display: flex;  
+   }
+   .footer{
+      display: block;
+   }
 
 }
 
@@ -202,12 +241,10 @@ $select_users->execute();
          <button type="submit" class="fas fa-search" name="search_btn"></button>
          <button type="submit" class="fas fa-refresh" id="homeBtn" ></button>
       </form> -->
-      <div class="buttons">
       <center><button class="fas fa-print" id="print">
          Print
       </button>
       </center>
-      </div>
 
      
 <br/>
@@ -234,7 +271,7 @@ $select_users->execute();
 
 
 <br/>
-<h1 class="title"><u>REGISTRATION FOR PRIVATE ADMITTED STUDENTS OF 2023/2024 ACADEMIC YEAR DIPET I, DIPET II, DEPEN, DIPCO</u></h1>
+<h1 class="title"><u>REGISTRATION FORM FOR DIPET I, DIPET II, DEPEN, DIPCO</u></h1>
      
 <?php
    $is_sortedBy = 'nothing';
@@ -259,27 +296,8 @@ $select_users->execute();
       <h3>Number</h3>
       <h3>Language</h3>
       <h3>Academic Year</h3>
-
-      <?php
-         if (isset($result) && count($result) > 0) {
-            foreach ($result as $fetch_users) {
-   echo   "". $fetch_users['matricule'] . "
-   ". $fetch_users['name'] ."
-   ". $fetch_users['gender'] ."
-   ". $fetch_users['dob'] ."
-   ". $fetch_users['pob'] ."
-   ". $fetch_users['department'] ."
-   ". $fetch_users['specialty'] ."
-   ". $fetch_users['level'] ."
-   ". $fetch_users['award'] ."
-   ". $fetch_users['email'] ."
-   ". $fetch_users['number'] ."
-   ". $fetch_users['language'] ."
-   ". $fetch_users['academic_year'] ."";
-            }
-         }
-      ?> -->
-<table id="customers">
+-->
+<!-- <table id="customers">
    <tr>
       <th>Matricule</th>
       <th>Name</th>
@@ -294,25 +312,43 @@ $select_users->execute();
       <th>Number</th>
       <th>Language</th>
       <th>Academic Year</th>
-   </tr>
+   </tr> -->
+   <div class="flex">
+
+   <div class="head">
+   <h3>Matricule:</h3>
+      <h3>Name:</h3>
+      <h3>Gender:</h3>
+      <h3>Date of Birth:</h3>
+      <h3>Place of Birth:</h3>
+      <h3>Department:</h3>
+      <h3>Specialty:</h3>
+      <h3>Level:</h3>
+      <h3>Award:</h3>
+      <h3>Email:</h3>
+      <h3>Number:</h3>
+      <h3>Language:</h3>
+      <h3>Academic Year:</h3>
+      </div>
+   <div class="data">
    <?php
    if (isset($result) && count($result) > 0) {
       foreach ($result as $fetch_users) {
          
-            echo "<tr>";
-            echo   "<td>". $fetch_users['matricule'] . "</td>
-            <td>". $fetch_users['name'] ."</td>
-            <td>". $fetch_users['gender'] ."</td>
-            <td>". $fetch_users['dob'] ."</td>
-            <td>". $fetch_users['pob'] ."</td>
-            <td>". $fetch_users['department'] ."</td>
-            <td>". $fetch_users['specialty'] ."</td>
-            <td>". $fetch_users['level'] ."</td>
-            <td>". $fetch_users['award'] ."</td>
-            <td>". $fetch_users['email'] ."</td>
-            <td>". $fetch_users['number'] ."</td>
-            <td>". $fetch_users['language'] ."</td>
-            <td>". $fetch_users['academic_year'] ."</td>
+            
+            echo   "<p>". $fetch_users['matricule'] . "</p>
+            <p>". $fetch_users['name'] ."</p>
+            <p>". $fetch_users['gender'] ."</p>
+            <p>". $fetch_users['dob'] ."</p>
+            <p>". $fetch_users['pob'] ."</p>
+            <p>". $fetch_users['department'] ."</p>
+            <p>". $fetch_users['specialty'] ."</p>
+            <p>". $fetch_users['level'] ."</p>
+            <p>". $fetch_users['award'] ."</p>
+            <p>". $fetch_users['email'] ."</p>
+            <p>". $fetch_users['number'] ."</p>
+            <p>". $fetch_users['language'] ."</p>
+            <p>". $fetch_users['academic_year'] ."</p>
 
          </tr>";
       }
@@ -320,41 +356,80 @@ $select_users->execute();
       echo "<tr><td colspan='13'>No data found.</td></tr>";
    }
    ?>
-</table>
+   </div>
+   <!-- <?php
+   // if (isset($result) && count($result) > 0) {
+   //    foreach ($result as $fetch_users) {
+         
+   //          echo "<tr>";
+   //          echo   "<td>". $fetch_users['matricule'] . "</td>
+   //          <td>". $fetch_users['name'] ."</td>
+   //          <td>". $fetch_users['gender'] ."</td>
+   //          <td>". $fetch_users['dob'] ."</td>
+   //          <td>". $fetch_users['pob'] ."</td>
+   //          <td>". $fetch_users['department'] ."</td>
+   //          <td>". $fetch_users['specialty'] ."</td>
+   //          <td>". $fetch_users['level'] ."</td>
+   //          <td>". $fetch_users['award'] ."</td>
+   //          <td>". $fetch_users['email'] ."</td>
+   //          <td>". $fetch_users['number'] ."</td>
+   //          <td>". $fetch_users['language'] ."</td>
+   //          <td>". $fetch_users['academic_year'] ."</td>
+
+   //       </tr>";
+   //    }
+   // } else {
+   //    echo "<tr><td colspan='13'>No data found.</td></tr>";
+   // }
+   ?>  -->
+   </div>
+   <div class="stamp">
+      <div class="text">
+         <h3>FISCAL STAMP</h3>
+      </div>
+      <div class="details">
+        <center><h2>DATE AND SIGNATURE OF CANDIDATE</h2> </center>
+        <h3>On ______________________________ at ______________________________</h3> 
+        <h3>Recived for Director and by Delegation</h3> 
+         <h3>Signature__________________________________</h3>
+   </div>
+   </div>
+   <CEnter><h3 class="footer">DIVISION OF TRAINING AND ORIENTATION HTTTC KUMBA</h3></CEnter>
 </section>
    </section>
-
    <!-- users section ends -->
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
    <!-- custom js file link  -->
    <script src="../js/admin_script.js"></script>
-   <script>   // Add an event listener to the refresh button
+   <script>   
+   // alert('hey hey')
+   // Add an event listener to the refresh button
           // Add an event listener to the home button
-          document.getElementById('homeBtn').addEventListener('click', function() {
-         // Set the desired home page URL
-         var homePageUrl = "users.php";
+      //     document.getElementById('homeBtn').addEventListener('click', function() {
+      //    // Set the desired home page URL
+      //    var homePageUrl = "users.php";
 
 
-         // Open the home page in a new tab or window
-         window.location.href = homePageUrl;
-      });
+      //    // Open the home page in a new tab or window
+      //    window.location.href = homePageUrl;
+      // });
       
-      let search = document.getElementById('search_box');
+   //    let search = document.getElementById('search_box');
 
-search.addEventListener('keydown', (e) => {
-   let subBtn = document.getElementById('form');
-   // subBtn.submit();
-   console.log(subBtn);
-}, false)
+   //    search.addEventListener('keydown', (e) => {
+   //    let subBtn = document.getElementById('form');
+   //    // subBtn.submit();
+   //    console.log(subBtn);
+   // }, false)
 
-let prt = document.getElementById('print');
+   let prt = document.getElementById('print');
 
-prt.addEventListener('click', (e) => {
-   alert('hey');
-   window.print();
-})
+   prt.addEventListener('click', (e) => {
+      // alert('hey hey')
+      window.print();
+   }, false)
       </script>
 
 </body>
