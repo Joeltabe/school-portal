@@ -71,6 +71,9 @@ if (isset($_GET['search_btn'])) {
   color: white;
   font-size: 1.3rem;
 }
+.show-prtn {
+   display: none !important;
+}
 #customers td{
    font-size: 1.4rem;
 }
@@ -97,6 +100,21 @@ if (isset($_GET['search_btn'])) {
          padding: 1.5rem 1.7rem;
          background-color: var(--light-bg);
          border: var(--border);
+   }
+   #prnt-std{
+      cursor: pointer;
+         background-color: #2980b9;     
+         border-radius: 0.5rem;
+         margin: 1.2rem 0;
+         /* font-size: 1.7rem; */
+         color: var(--black);
+         padding: 1.5rem 1.7rem;
+         background-color: var(--light-bg);
+         border: var(--border);
+   }
+
+   #prnt-std:hover{
+      background-color: #2980b9;
    }
    #print:hover{
       background-color: #2980b9;
@@ -141,8 +159,11 @@ if (isset($_GET['search_btn'])) {
          text-decoration: none;
          color: white;
       }
+      .flex0{
+         display: block;
+      }
       .flex{
-      display: flex;
+      display: none;
       justify-content: center;
     }
     .head{
@@ -171,10 +192,17 @@ if (isset($_GET['search_btn'])) {
     .stamp{
       display: none;
    }
-   .footer{
+   footer{
       display: none;
    }
+   .empty-page{
+         page-break-after: always;
+      }
    @media print {
+
+      #prnt-std{
+         display: none;
+      }
       header, footer, aside, form, #form, .heading, #print,#menu-btn{
          display: none;
       }
@@ -190,6 +218,21 @@ if (isset($_GET['search_btn'])) {
       .view{
          display: none;
       }
+      .stamp{
+      display: flex;
+   }
+   footer{
+      display: block;
+      page-break-after: always;
+   }
+   #customers{
+      page-break-after: always;
+   }
+
+   .flex{
+      display: flex;
+      justify-content: center;
+    }
 
 }
 
@@ -268,7 +311,7 @@ if (isset($_GET['search_btn'])) {
       <center>
       <form method="post">
       <button class="fas fa-sort" style="cursor: pointer; margin: 12px;" name="sort_specialty" id="sort">
-         sort per specialty
+         sort per option
       </button>
       </form>
       </center>
@@ -280,14 +323,19 @@ if (isset($_GET['search_btn'])) {
       </center>
       <center><button class="fas fa-print" 
          id="print">
-         Print
+         Print Page
+      </button>
+      </center>
+      <center><button class="fas fa-print" 
+         id="prnt-std">
+         Print Students form
       </button>
       </center>
       </div>
      
 <br/>
 <br/>
-<div class="intro">
+<div class="intro" id="intro" >
 <div class="left">
    <p>UNIVERSITY OF BUEA
 <p>HIGHER TECHNICAL TEACHERS' TRAINING COLLEGE</p>                                            
@@ -309,8 +357,8 @@ if (isset($_GET['search_btn'])) {
 
 
 <br/>
-<h1 class="title"><u>REGISTRATION FOR PRIVATE ADMITTED STUDENTS OF 2023/2024 ACADEMIC YEAR DIPET I, DIPET II, DEPEN, DIPCO</u></h1>
-     
+<h1 class="title" id="title-r"><u>REGISTRATION FOR PRIVATE ADMITTED STUDENTS OF 2023/2024 ACADEMIC YEAR DIPET I, DIPET II, DEPEN, DIPCO</u></h1>
+<div class="" id="empty-page"></div>
    <!-- main -->
    <?php
 // Check if the sort buttons is clicked
@@ -356,7 +404,7 @@ if (isset($_POST['sort_department'])) {
       <th>Date of Birth</th>
       <th>Place of Birth</th>
       <th>Department</th>
-      <th>Specialty</th>
+      <th>Option</th>
       <th>Level</th>
       <th>Award</th>
       <th>Email</th>
@@ -428,33 +476,66 @@ if (isset($_POST['sort_department'])) {
                $prev_depart2 = $fetch_users['specialty'];
             }
          }
+         
       } else {
          echo "<tr><td colspan='13'>No data found.</td></tr>";
       }
       ?>
    </table>
-   <div class="flex">
+ <div class="prnt" id="prnts">
+<?php
+if (isset($result) && count($result) > 0) {
+foreach ($result as $fetch_users) {
+   echo '<section class="grid">
+   <br/>
+   <br/>
+   <div class="intro">
+   <div class="left">
+   <p>UNIVERSITY OF BUEA
+   <p>HIGHER TECHNICAL TEACHERS TRAINING COLLEGE</p>                                            
+   <p>P.O Box 249 Buea Road, Kumba</p>
+   <p>South West Region, Cameroon</p>
+   <p>Tel:(+237)233354691 - Fax:(+237)233354692</p>
+   <p>Email: administrator@htttckumba.com</p>
+   <p>Director: Prof. Akume Daniel Akume</p>
+   <p>Deputy Director: Prof. Nkongho Anyi Joseph</p>
+   <p>Director of Studies: Prof. Defang henry Fualefa</p>
+   <p>Secretary General: Prof. Lissouck Daniel</p>
+   </p>
+   </div>
+   <div><img src="../images/Capture.PNG" class="centered" alt="" width="100px" height="100px"></div>
    
-   <?php
-   if (isset($result) && count($result) > 0) {
-      foreach ($result as $fetch_users) {
-      echo "<div class='head'>
-         <h3>Matricule:</h3>
-         <h3>Name:</h3>
-         <h3>Gender:</h3>
-         <h3>Date of Birth:</h3>
-         <h3>Place of Birth:</h3>
-         <h3>Department:</h3>
-         <h3>Specialty:</h3>
-         <h3>Level:</h3>
-         <h3>Award:</h3>
-         <h3>Email:</h3>
-         <h3>Number:</h3>
-         <h3>Language:</h3>
-         <h3>Academic Year:</h3>
-      </div>";
-            echo "<div class='data'>
-            echo   '<p>'. $fetch_users['matricule'] . '</p>
+   <div class="right"><p> REPUBLIC OF CAMEROON</p>
+   <p>Peace - Work - Fatherland</p></div>
+   </div>
+   
+   
+   <br/>
+   <h1 class="title"><u>REGISTRATION FORM FOR DIPET I, DIPET II, DEPEN, DIPCO</u></h1>
+   </section>
+
+   <div class="flex">
+   <div class="head">
+   <h3>Matricule:</h3>
+   <h3>Name:</h3>
+   <h3>Gender:</h3>
+   <h3>Date of Birth:</h3>
+   <h3>Place of Birth:</h3>
+   <h3>Department:</h3>
+   <h3>Specialty:</h3>
+   <h3>Level:</h3>
+   <h3>Award:</h3>
+   <h3>Email:</h3>
+   <h3>Number:</h3>
+   <h3>Language:</h3>
+   <h3>Academic Year:</h3>
+   </div>
+  
+  
+      
+   <div class="data"> ';
+            
+            echo   "<p>". $fetch_users['matricule'] . "</p>
             <p>". $fetch_users['name'] ."</p>
             <p>". $fetch_users['gender'] ."</p>
             <p>". $fetch_users['dob'] ."</p>
@@ -467,16 +548,32 @@ if (isset($_POST['sort_department'])) {
             <p>". $fetch_users['number'] ."</p>
             <p>". $fetch_users['language'] ."</p>
             <p>". $fetch_users['academic_year'] ."</p>
-            </div>";
+   </div>
+</div>";
+
+echo '
+<div class="stamp">
+   <div class="text">
+      <h3>FISCAL STAMP</h3>
+   </div>
+   <div class="details">
+      <center><h2>DATE AND SIGNATURE OF CANDIDATE</h2> </center>
+      <h3>On ______________________________ at ______________________________</h3> 
+      <h3>Recived for Director and by Delegation</h3> 
+      <h3>Signature__________________________________</h3>
+   </div>
+</div>';
+
+echo '<br><br><CEnter><footer>DIVISION OF TRAINING AND ORIENTATION HTTTC KUMBA</footer></CEnter>';
       }
-   } else {
-      echo "<tr><td colspan='13'>No data found.</td></tr>";
    }
    ?>
-   </div>
-   </div>
-   </section>
-      </section>
+  
+</div>
+
+</div>
+
+
 
    <!-- users section ends -->
 
@@ -504,9 +601,34 @@ search.addEventListener('keydown', (e) => {
 }, false)
 
 let prt = document.getElementById('print');
+let prtStudent = document.getElementById('prnt-std')
+let customers = document.getElementById('customers');
+let prtn = document.getElementById('prnts');
+let TRO = document.getElementById('intro');
+let TTL = document.getElementById('title-r');
+let emptyPage = document.getElementById('empty-page');
 
 prt.addEventListener('click', (e) => {
+   console.log(prtn)
+   prtn.classList.add('show-prtn')
    window.print();
+   prtn.classList.remove('show-prtn')
+
+})
+
+prtStudent.addEventListener('click', (e) => {
+   console.log(customers);
+   customers.classList.add('show-prtn')
+   TRO.classList.add('show-prtn')
+   TTL.classList.add('show-prtn')
+   emptyPage.classList.add('empty-page');
+   window.print();
+   emptyPage.classList.remove('empty-page');
+   customers.classList.remove('show-prtn')
+   TTL.classList.remove('show-prtn')
+   TRO.classList.remove('show-prtn')
+
+
 })
       </script>
 

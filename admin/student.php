@@ -314,7 +314,6 @@ $select_users->execute();
       <th>Academic Year</th>
    </tr> -->
    <div class="flex">
-
    <div class="head">
    <h3>Matricule:</h3>
       <h3>Name:</h3>
@@ -322,7 +321,7 @@ $select_users->execute();
       <h3>Date of Birth:</h3>
       <h3>Place of Birth:</h3>
       <h3>Department:</h3>
-      <h3>Specialty:</h3>
+      <h3>Option:</h3>
       <h3>Level:</h3>
       <h3>Award:</h3>
       <h3>Email:</h3>
@@ -392,7 +391,7 @@ $select_users->execute();
         <h3>On ______________________________ at ______________________________</h3> 
         <h3>Recived for Director and by Delegation</h3> 
          <h3>Signature__________________________________</h3>
-   </div>
+      </div>
    </div>
    <CEnter><h3 class="footer">DIVISION OF TRAINING AND ORIENTATION HTTTC KUMBA</h3></CEnter>
 </section>

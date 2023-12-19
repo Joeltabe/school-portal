@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
     }
     ?>
     </select>
-      <h4 class="reg_label">Enter your specialty:</h4>
+      <h4 class="reg_label">Enter your option:</h4>
       <!-- <select class="box" name="specialty" id="specialty">
       <?php
       if (is_array($specialties)) { // Check if $specialties is an array
@@ -156,7 +156,7 @@ if (isset($_POST['submit'])) {
             echo "<option value='" . $specialty['specialty_name'] . "' name='specialty'>" . $specialty['specialty_name'] . "</option>";
         }
     } else {
-        echo "<option disabled>No specialties available</option>";
+        echo "<option disabled>No options available</option>";
     }
     ?>
 </select>

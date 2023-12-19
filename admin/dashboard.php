@@ -91,8 +91,8 @@ if(isset($_COOKIE['admin_id'])){
          $count_admins = $select_admins->rowCount();
       ?>
       <h3><?= $count_admins; ?></h3>
-      <p>total specialties</p>
-      <a href="add_sp.php" class="btn">view specialties</a>
+      <p>total option</p>
+      <a href="add_sp.php" class="btn">view option</a>
    </div>
    <div class="box">
       <?php

@@ -56,7 +56,7 @@
 						<a href="?#ccc" class="navigation__link"><span>02</span>Your benfits</a>
 					</li>
 					<li class="navigation__item">
-						<a href="register.php" class="navigation__link"><span>05</span>Register Now</a>
+						<a href="register.php" class="navigation__link"><span>03</span>fill form here</a>
 					</li>
 				</ul>
 			</nav>
@@ -79,7 +79,7 @@
 				</h1>
 
 				<a href="register.php" class="btn btn--white btn--animated"
-					>Register Now</a
+					>fill form here</a
 				>
 			</div>
 		</header>

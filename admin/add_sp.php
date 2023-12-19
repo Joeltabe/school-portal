@@ -45,7 +45,7 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add specialty</title>
+    <title>Add option</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -135,9 +135,9 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php include '../components/admin_header.php'; ?>
     <div style="display: flex; justify-content: center;">
         <form method="post" action="" class="form">
-            <label for="specialty_name">Specialty Name:</label>
+            <label for="specialty_name">Option Name:</label>
             <input type="text" name="specialty_name" id="specialty_name" required>
-            <input type="submit" name="submit" value="Add Specialty">
+            <input type="submit" name="submit" value="Add Option">
         </form>
     </div>
 
@@ -146,7 +146,7 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table>
             <thead>
                 <tr>
-                    <th>Specialty Name</th>
+                    <th>Option Name</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -156,7 +156,7 @@ $specialties = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $specialty['specialty_name']; ?></td>
                         <td>
                             <form method="post" action="">
-                                <button type="submit" name="delete" value="<?php echo $specialty['id']; ?>" class="delete-button" onclick="return confirm('Are you sure you want to delete this department?')">Delete</button>
+                                <button type="submit" name="delete" value="<?php echo $specialty['id']; ?>" class="delete-button" onclick="return confirm('Are you sure you want to delete this Option?')">Delete</button>
                             </form>
                         </td>
                     </tr>

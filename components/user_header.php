@@ -4,7 +4,7 @@
 
    <nav class="navbar nav-1">
       <section class="flex">
-         <a href="index.php" class="logo"><i class="fas fa-house"></i>School login portal</a>
+         <a href="index.php" class="logo"><i class="fas fa-house"></i>REGISTRATION FORM FOR DIPET I, DIPET II, DEPEN, DIPCO</a>
 
       </section>
    </nav>
@@ -15,7 +15,7 @@
 
          <div class="menu">
             <ul>
-            <li><a href="index.html">Home_page</a></li>
+            <li><a href="index.php">Home_page</a></li>
                <!-- <li><a href="#">options<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="search.php">filter search</a></li>

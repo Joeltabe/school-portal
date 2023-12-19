@@ -8,7 +8,7 @@
       <a href="dashboard.php"><i class="fas fa-home"></i><span>home</span></a>
       <a href="users.php"><i class="fas fa-user"></i><span>students</span></a>
       <a href="add_dpt.php"><i class="fas fa-building"></i><span>add departments</span></a>
-      <a href="add_sp.php"><i class="fas fa-book"></i><span>add specialty</span></a>
+      <a href="add_sp.php"><i class="fas fa-book"></i><span>add option</span></a>
    </nav>
 
    <a href="update.php" class="btn">update account</a>
